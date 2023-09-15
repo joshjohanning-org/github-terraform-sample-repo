@@ -9,6 +9,8 @@ terraform {
 
 # Configure the GitHub Provider
 provider "github" {
+  alias = "joshjohanning-org"
+
   owner = "joshjohanning-org"
   #   token = "abc"
   app_auth {
@@ -18,22 +20,38 @@ provider "github" {
   }
 }
 
-provider "github2" {
+provider "github" {
+  alias = "joshjohanning-workflows"
+
   owner = "joshjohanning-workflows"
   #   token = "abc"
   app_auth {
     id              = var.app_id              # or `GITHUB_APP_ID`
-    installation_id = "41851711" # or `GITHUB_APP_INSTALLATION_ID`
+    installation_id = var.app_installation_id # or `GITHUB_APP_INSTALLATION_ID`
     pem_file        = file(var.app_pem_file)  # or `GITHUB_APP_PEM_FILE`
   }
 }
 
+provider "github" {
+  owner = "joshjohanning-workflows"
+  #   token = "abc"
+  app_auth {
+    id              = var.app_id             # or `GITHUB_APP_ID`
+    installation_id = "41851711"             # or `GITHUB_APP_INSTALLATION_ID`
+    pem_file        = file(var.app_pem_file) # or `GITHUB_APP_PEM_FILE`
+  }
+}
+
 import {
+  provider = github.joshjohanning-org
+
   to = github_organization_settings.joshjohanning-org
   id = "joshjohanning-org"
 }
 
 resource "github_organization_settings" "joshjohanning-org" {
+  provider = github.joshjohanning-org
+
   lifecycle {
     prevent_destroy = true
   }
@@ -52,11 +70,15 @@ resource "github_organization_settings" "joshjohanning-org" {
 }
 
 import {
+  provider = github.joshjohanning-workflows
+
   to = github_organization_settings.joshjohanning-workflows
   id = "joshjohanning-workflows"
 }
 
 resource "github_organization_settings" "joshjohanning-workflows" {
+  provider = github.joshjohanning-workflows
+
   lifecycle {
     prevent_destroy = true
   }
