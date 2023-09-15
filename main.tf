@@ -12,7 +12,6 @@ provider "github" {
   alias = "joshjohanning-org"
 
   owner = "joshjohanning-org"
-  #   token = "abc"
   app_auth {
     id              = var.app_id              # or `GITHUB_APP_ID`
     installation_id = var.app_installation_id # or `GITHUB_APP_INSTALLATION_ID`
@@ -24,7 +23,6 @@ provider "github" {
   alias = "joshjohanning-workflows"
 
   owner = "joshjohanning-workflows"
-  #   token = "abc"
   app_auth {
     id              = var.app_id              # or `GITHUB_APP_ID`
     installation_id = var.app_installation_id # or `GITHUB_APP_INSTALLATION_ID`
