@@ -13,9 +13,9 @@ provider "github" {
 
   owner = "joshjohanning-org"
   app_auth {
-    id              = var.app_id              # or `GITHUB_APP_ID`
-    installation_id = var.app_installation_id # or `GITHUB_APP_INSTALLATION_ID`
-    pem_file        = file(var.app_pem_file)  # or `GITHUB_APP_PEM_FILE`
+    id              = var.app_id                                # or `GITHUB_APP_ID`
+    installation_id = var.app_installation_id_joshjohanning-org # or `GITHUB_APP_INSTALLATION_ID`
+    pem_file        = file(var.app_pem_file)                    # or `GITHUB_APP_PEM_FILE`
   }
 }
 
@@ -24,9 +24,9 @@ provider "github" {
 
   owner = "joshjohanning-workflows"
   app_auth {
-    id              = var.app_id              # or `GITHUB_APP_ID`
-    installation_id = var.app_installation_id # or `GITHUB_APP_INSTALLATION_ID`
-    pem_file        = file(var.app_pem_file)  # or `GITHUB_APP_PEM_FILE`
+    id              = var.app_id                                      # or `GITHUB_APP_ID`
+    installation_id = var.app_installation_id_joshjohanning-workflows # or `GITHUB_APP_INSTALLATION_ID`
+    pem_file        = file(var.app_pem_file)                          # or `GITHUB_APP_PEM_FILE`
   }
 }
 
@@ -81,15 +81,14 @@ resource "github_organization_settings" "joshjohanning-workflows" {
     prevent_destroy = true
   }
 
-  description                                    = "josh's workflow samples"
   billing_email                                  = "joshjohanning@github.com"
-  advanced_security_enabled_for_new_repositories = true
+  advanced_security_enabled_for_new_repositories = false
   dependabot_alerts_enabled_for_new_repositories = true
   dependency_graph_enabled_for_new_repositories  = true
   members_can_create_private_repositories        = false
   members_can_create_public_repositories         = false
   members_can_create_repositories                = false
-  secret_scanning_enabled_for_new_repositories   = true
-  location                                       = "United States of America"
-  blog                                           = "https://josh-ops.com"
+  secret_scanning_enabled_for_new_repositories   = false
+  members_can_fork_private_repositories          = true
+
 }
