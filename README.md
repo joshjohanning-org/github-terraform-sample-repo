@@ -9,6 +9,10 @@ The `use-pat` branch uses a PAT, which does allow you to do some enterprise-leve
 ## Commands
 
 ```
-terraform plan -var-file=repositories.tfvars
-terraform apply -var-file=repositories.tfvars
+terraform init -upgrade # upgrade the github terraform provider
+terraform fmt # format the code
+tflint # lint the code (requires tflint to be installed)
+tfsec --ignore-hcl-errors # security scan the code (requires tfsec to be installed)
+terraform plan -var-file=repositories.tfvars # plan with vars
+terraform apply -var-file=repositories.tfvars # apply with vars
 ```

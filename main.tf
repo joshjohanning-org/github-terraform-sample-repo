@@ -1,4 +1,5 @@
 terraform {
+  required_version = ">= 1.5.0"
   required_providers {
     github = {
       source  = "integrations/github"
@@ -7,7 +8,8 @@ terraform {
   }
 }
 
-# Configure the GitHub Provider
+######### joshjohanning-org org #########
+
 provider "github" {
   alias = "joshjohanning-org"
 
@@ -16,27 +18,6 @@ provider "github" {
     id              = var.app_id                                # or `GITHUB_APP_ID`
     installation_id = var.app_installation_id_joshjohanning-org # or `GITHUB_APP_INSTALLATION_ID`
     pem_file        = file(var.app_pem_file)                    # or `GITHUB_APP_PEM_FILE`
-  }
-}
-
-provider "github" {
-  alias = "joshjohanning-workflows"
-
-  owner = "joshjohanning-workflows"
-  app_auth {
-    id              = var.app_id                                      # or `GITHUB_APP_ID`
-    installation_id = var.app_installation_id_joshjohanning-workflows # or `GITHUB_APP_INSTALLATION_ID`
-    pem_file        = file(var.app_pem_file)                          # or `GITHUB_APP_PEM_FILE`
-  }
-}
-
-provider "github" {
-  owner = "joshjohanning-workflows"
-  #   token = "abc"
-  app_auth {
-    id              = var.app_id             # or `GITHUB_APP_ID`
-    installation_id = "41851711"             # or `GITHUB_APP_INSTALLATION_ID`
-    pem_file        = file(var.app_pem_file) # or `GITHUB_APP_PEM_FILE`
   }
 }
 
@@ -68,6 +49,19 @@ resource "github_organization_settings" "joshjohanning-org" {
   default_repository_permission                                = "write"
   secret_scanning_push_protection_enabled_for_new_repositories = true
   members_can_fork_private_repositories                        = true
+}
+
+######### joshjohanning-workflows org #########
+
+provider "github" {
+  alias = "joshjohanning-workflows"
+
+  owner = "joshjohanning-workflows"
+  app_auth {
+    id              = var.app_id                                      # or `GITHUB_APP_ID`
+    installation_id = var.app_installation_id_joshjohanning-workflows # or `GITHUB_APP_INSTALLATION_ID`
+    pem_file        = file(var.app_pem_file)                          # or `GITHUB_APP_PEM_FILE`
+  }
 }
 
 import {
