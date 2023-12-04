@@ -15,4 +15,5 @@ tflint # lint the code (requires tflint to be installed)
 tfsec --ignore-hcl-errors # security scan the code (requires tfsec to be installed)
 terraform plan -var-file=repositories.tfvars # plan with vars
 terraform apply -var-file=repositories.tfvars # apply with vars
+terraform apply -var-file=repositories.tfvars -auto-approve # apply with vars and autoapprove
 ```

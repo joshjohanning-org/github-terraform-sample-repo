@@ -14,10 +14,7 @@ resource "github_repository" "repository" {
 
   name       = each.value.name
   visibility = each.value.visibility
-
-  lifecycle {
-    prevent_destroy = true
-  }
+  vulnerability_alerts = true
 }
 
 resource "github_repository_ruleset" "example" {
