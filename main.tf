@@ -54,17 +54,20 @@ resource "github_organization_settings" "joshjohanning-org" {
     prevent_destroy = true
   }
 
-  description                                    = "josh's samples"
-  billing_email                                  = "joshjohanning@github.com"
-  advanced_security_enabled_for_new_repositories = true
-  dependabot_alerts_enabled_for_new_repositories = true
-  dependency_graph_enabled_for_new_repositories  = true
-  members_can_create_private_repositories        = false
-  members_can_create_public_repositories         = false
-  members_can_create_repositories                = false
-  secret_scanning_enabled_for_new_repositories   = true
-  location                                       = "United States of America"
-  blog                                           = "https://josh-ops.com"
+  description                                                  = "josh's samples"
+  billing_email                                                = "joshjohanning@github.com"
+  advanced_security_enabled_for_new_repositories               = true
+  dependabot_alerts_enabled_for_new_repositories               = true
+  dependency_graph_enabled_for_new_repositories                = true
+  members_can_create_private_repositories                      = false
+  members_can_create_public_repositories                       = false
+  members_can_create_repositories                              = false
+  secret_scanning_enabled_for_new_repositories                 = true
+  location                                                     = "United States of America"
+  blog                                                         = "https://josh-ops.com"
+  default_repository_permission                                = "write"
+  secret_scanning_push_protection_enabled_for_new_repositories = true
+  members_can_fork_private_repositories                        = true
 }
 
 import {
@@ -82,12 +85,13 @@ resource "github_organization_settings" "joshjohanning-workflows" {
   }
 
   billing_email                                  = "joshjohanning@github.com"
-  advanced_security_enabled_for_new_repositories = false
+  advanced_security_enabled_for_new_repositories = true
   dependabot_alerts_enabled_for_new_repositories = true
   dependency_graph_enabled_for_new_repositories  = true
-  members_can_create_private_repositories        = false
-  members_can_create_public_repositories         = false
-  members_can_create_repositories                = false
+  members_can_create_private_repositories        = true
+  members_can_create_internal_repositories       = true
+  members_can_create_public_repositories         = true
+  members_can_create_repositories                = true
   secret_scanning_enabled_for_new_repositories   = false
   members_can_fork_private_repositories          = true
 
