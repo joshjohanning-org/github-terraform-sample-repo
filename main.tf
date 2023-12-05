@@ -14,6 +14,8 @@ provider "github" {
   alias = "joshjohanning-org"
 
   owner = "joshjohanning-org"
+  # token = "abc" # if using PAT
+
   app_auth {
     id              = var.app_id                                # or `GITHUB_APP_ID`
     installation_id = var.app_installation_id_joshjohanning-org # or `GITHUB_APP_INSTALLATION_ID`
@@ -57,6 +59,8 @@ provider "github" {
   alias = "joshjohanning-workflows"
 
   owner = "joshjohanning-workflows"
+  # token = "abc" # if using PAT
+
   app_auth {
     id              = var.app_id                                      # or `GITHUB_APP_ID`
     installation_id = var.app_installation_id_joshjohanning-workflows # or `GITHUB_APP_INSTALLATION_ID`

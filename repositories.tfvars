@@ -16,9 +16,9 @@ repositories = [
     visibility = "public"
   },
 
-#   {
-#     name       = "repo-C3PO"
-#     visibility = "internal"
-#   },
+  #   {
+  #     name       = "repo-C3PO"
+  #     visibility = "internal"
+  #   },
   # add more repos here
 ]

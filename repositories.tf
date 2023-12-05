@@ -12,8 +12,8 @@ resource "github_repository" "repository" {
 
   for_each = { for repository in var.repositories : repository.name => repository }
 
-  name       = each.value.name
-  visibility = each.value.visibility
+  name                 = each.value.name
+  visibility           = each.value.visibility
   vulnerability_alerts = true
 }
 
